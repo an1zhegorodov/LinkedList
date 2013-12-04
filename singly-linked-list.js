@@ -14,6 +14,7 @@ var data = [
 ];
 
 var node = new Node(data[0].name, data[0].next, data);
+
 // iterate nodes
 while (node != null) {
     console.log(node.name);

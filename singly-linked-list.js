@@ -1,22 +1,34 @@
-function Node(name, next, data) {
-    this.name = name;
-    if (next !== null) {
-        this.next = new Node(data[next].name, data[next].next, data);
+function ListNode(data) {
+    this.data = data;
+    this.next = null;
+}
+
+function SinglyLinkedList() {
+    this.head   = null;
+    this.length = 0;
+}
+
+SinglyLinkedList.prototype.add = function (node) {
+    if (this.head === null) {
+        this.head = node;
     } else {
-        this.next = next;
+        current = this.head;
+        while (current.next) {
+            current = current.next;
+        }
+        current.next = node;
     }
+    this.length++;
 }
 
 var data = [
-    {'name': 'val1', 'next': 1},
-    {'name': 'val2', 'next': 2},
-    {'name': 'val3', 'next': null}
+    {'fname': 'Anton',    'sname': 'Nizhegorodov'},
+    {'fname': 'Dan',      'sname': 'Brown'       },
+    {'fname': 'Timothy ', 'sname': 'Olyphant'    },
 ];
 
-var node = new Node(data[0].name, data[0].next, data);
-
-// iterate nodes
-while (node != null) {
-    console.log(node.name);
-    node = node.next;
+var l = new SinglyLinkedList();
+for (i in data) {
+    l.add(new ListNode(data[i]));
 }
+console.log(l);

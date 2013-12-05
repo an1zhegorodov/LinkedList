@@ -5,18 +5,16 @@ function ListNode(data) {
 
 function SinglyLinkedList() {
     this.head   = null;
+    this.tail   = null;
     this.length = 0;
 }
 
 SinglyLinkedList.prototype.add = function (node) {
     if (this.head === null) {
-        this.head = node;
+        this.head = this.tail = node;
     } else {
-        current = this.head;
-        while (current.next) {
-            current = current.next;
-        }
-        current.next = node;
+        this.tail.next = node;
+        this.tail = node;
     }
     this.length++;
 }
